@@ -11,8 +11,11 @@ export const TabBarContainer =styled.div`
         display:flex;
         justify-content:space-between;
         align-items:center;
-
+.active{
+        color:green;
     }
+    }
+    
     li{
         width:100%;height:100%;
         display:flex;

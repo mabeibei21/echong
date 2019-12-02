@@ -1,4 +1,4 @@
-import {Select,Mine,Login,Class,Cart,Book} from "../pages";
+import {Select,Mine,Login,Class,Cart,Book,Search,List,NewGuest,Rob,DogFood,Spellgroup,Cleargoods,Detail,Exit,Collection} from "../pages";
 
 export const TabBarRoute=[
     {
@@ -32,7 +32,7 @@ export const TabBarRoute=[
         path:"/cart",
         component:Cart,
         meta:{
-            flag:true
+            flag:false
         },
         icon:"\ue614",
         text:"购物车"
@@ -42,11 +42,12 @@ export const TabBarRoute=[
         component:Mine,
         meta:{
             flag:true,
-            requiredAuth:true
+            requiredAuth:false
         },
         icon:"\ue505",
         text:"我的"
     },
+    
 ];
 
 export const NoTabBarRoute=[
@@ -56,7 +57,70 @@ export const NoTabBarRoute=[
         meta:{
             flag:false
         }
-    }
+    },{
+        path:"/search",
+        component:Search,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/list",
+        component:List,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/newguest",
+        component:NewGuest,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/rob",
+        component:Rob,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/dogfood",
+        component:DogFood,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/spellgroup",
+        component:Spellgroup,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/cleargoods",
+        component:Cleargoods,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/detail",
+        component:Detail,
+        meta:{
+            flag:false
+        }
+    },{
+        path:"/exit",
+        component:Exit,
+        meta:{
+            flag:false
+        }
+    },
+    {
+        path:"/collection",
+        component:Collection,
+        meta:{
+            flag:false
+        }
+    },
+    
+    
 ];
 
 export const RouteConfig=TabBarRoute.concat(NoTabBarRoute);

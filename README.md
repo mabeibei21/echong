@@ -25,9 +25,12 @@
  - react-app-rewired
  - customize-cra
  - babel-plugin-import
+ - @babel/plugin-proposal-decorators
+ - react-scripts
+ - @babel/plugin-syntax-jsx
 
 
-`yarn add http-proxy-middleware react-app-rewired customize-cra babel-plugin-import --dev`
+`yarn add http-proxy-middleware react-app-rewired customize-cra babel-plugin-import @babel/plugin-proposal-decorators @babel/plugin-syntax-jsx react-scripts --dev`
 
  # 调试工具
  >redux-devtools-extension
