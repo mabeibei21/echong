@@ -1,12 +1,41 @@
 const proxy = require("http-proxy-middleware");
 
-module.exports=(app)=>{
-    app.use("/ajax",proxy({
-        target:"https://mall.api.epet.com",
-        changeOrigin:true,
-        pathRewrite:{
-            "^/ajax":""
-        }
-    }))
-}
-//https://mall.api.epet.com/v3/index/main.html?do=getDynamicV415&pet_type=dog&version=435&is_single=0&isWeb=1&system=wap&distinct_id=
+module.exports = app => {
+	app.use(
+		"/ajax",
+		proxy({
+			target: "https://mall.api.epet.com",
+			changeOrigin: true,
+			pathRewrite: {
+				"^/ajax": ""
+			}
+		})
+	);
+	app.use(
+		"/v3",
+		proxy({
+			target: "https://mallcdn.api.epet.com",
+			changeOrigin: true
+		})
+	);
+	app.use(
+		"/v3",
+		proxy({
+			target: " https://mallapi.epetht.com",
+			changeOrigin: true,
+			pathRewrite: {
+				"^/v3": ""
+			}
+		})
+	);
+	app.use(
+		"/v3",
+		proxy({
+			target: " https://mall.api.epet.com",
+			changeOrigin: true,
+			pathRewrite: {
+				"^/v31": ""
+			}
+		})
+	);
+};

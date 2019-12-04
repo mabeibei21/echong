@@ -1,29 +1,41 @@
-import React, { Component } from 'react'
-import {PageContainer} from "../../common/styled";
+import React, { Component } from "react";
+import { PageContainer } from "../../common/styled";
 import { Classifyi, Head } from "./styled";
 import Tab2 from "../../components/tab2/index";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+@connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 class Class extends Component {
-    constructor() {
+	constructor() {
 		super();
 		this.state = {
-			flag: "block"
+			flag: "block",
+			flag1: "none",
+			index_flag: 0,
+			green: "green",
+			green0: ""
 		};
 	}
-    render() {
-        return (
-            <PageContainer>
-                <Head>
+	render() {
+		console.log(this.props);
+		let { hot_list, pic_list, tab2_list } = this.props;
+
+		return (
+			<PageContainer>
+				<Head>
 					<div className="sortHead">
-						<div>
-							<p className="green">分类</p>
+						<div onClick={this.handleChange1.bind(this)}>
+							<p className={this.state.green}>分类</p>
 						</div>
-						<div>
-							<p>品牌</p>
+						<div onClick={this.handleChange2.bind(this)}>
+							<p className={this.state.green0}>品牌</p>
 						</div>
 						<a href="">
 							<img
 								src="https://static.epetbar.com/static_web/wap/src/images/background/search-ico.png"
-								alt=""
+								alt="#"
 							/>
 						</a>
 					</div>
@@ -33,20 +45,23 @@ class Class extends Component {
 					<div className="sortBody">
 						<div className="left">
 							<ul>
-								<li className="xuanZhong">为您推荐</li>
-								<li>E宠国际</li>
-								<li>狗狗主粮</li>
-								<li>狗狗零食</li>
-								<li>狗狗玩具</li>
-								<li>狗狗清洁</li>
-								<li>狗狗保健</li>
-								<li>狗狗护理</li>
-								<li>狗狗生活</li>
-								<li>狗狗牵引</li>
-								<li>出游洗澡</li>
-								<li>狗狗服饰</li>
-								<li>狗狗美容</li>
-								<li>狗狗窝垫</li>
+								{hot_list.map((item, index) => {
+									return (
+										<li
+											className={
+												index == this.state.index_flag ? "xuanZhong" : ""
+											}
+											key={item.cateid}
+											onClick={() => {
+												{
+													this.handleListchange(index, item.cateid);
+												}
+											}}
+										>
+											{item.name}
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 						<div className="right">
@@ -55,82 +70,54 @@ class Class extends Component {
 									热门分类
 								</a>
 								<ul>
-									<li>
-										<a href="">
-											<div>
-												<img
-													src="https://img2.epetbar.com/nowater/2017-05/26/10/2eeb97d6268f555de24ec370fd0de2ad.jpg?x-oss-process=style/fill&$1=300&$2=300"
-													alt=""
-												/>
-											</div>
-											<p>磨牙洁齿</p>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<div>
-												<img
-													src="https://img2.epetbar.com/nowater/2016-07/21/14/0f972761c08a37c8baff88fa9302053d.jpg?x-oss-process=style/fill&$1=300&$2=300"
-													alt=""
-												/>
-											</div>
-											<p>进口狗粮</p>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<div>
-												<img
-													src="https://img2.epetbar.com/nowater/2018-08/14/21/87aa3e41aa86317af010c6b1af29064f.jpg?x-oss-process=style/fill&$1=300&$2=300"
-													alt=""
-												/>
-											</div>
-											<p>国产狗粮</p>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<div>
-												<img
-													src="https://img2.epetbar.com/nowater/2017-05/26/10/2eeb97d6268f555de24ec370fd0de2ad.jpg?x-oss-process=style/fill&$1=300&$2=300"
-													alt=""
-												/>
-											</div>
-											<p>磨牙洁齿</p>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<div>
-												<img
-													src="https://img2.epetbar.com/nowater/2017-05/26/10/2eeb97d6268f555de24ec370fd0de2ad.jpg?x-oss-process=style/fill&$1=300&$2=300"
-													alt=""
-												/>
-											</div>
-											<p>磨牙洁齿</p>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<div>
-												<img
-													src="https://img2.epetbar.com/nowater/2017-05/26/10/2eeb97d6268f555de24ec370fd0de2ad.jpg?x-oss-process=style/fill&$1=300&$2=300"
-													alt=""
-												/>
-											</div>
-											<p>磨牙洁齿</p>
-										</a>
-									</li>
+									{pic_list.map((item, index) => {
+										return (
+											<li key={index}>
+												<a href="#">
+													<div>
+														<img src={item.photo} alt="#" />
+													</div>
+													<p>{item.name}</p>
+												</a>
+											</li>
+										);
+									})}
 								</ul>
 							</div>
 						</div>
 					</div>
 				</Classifyi>
-                <Tab2 fl={!this.state.flag}></Tab2>
-            </PageContainer>
-        )
-    }
+				<Tab2 fl={this.state.flag1} list={tab2_list}></Tab2>
+			</PageContainer>
+		);
+	}
+	componentDidMount() {
+		this.handleAsyncList();
+	}
+	handleAsyncList() {
+		this.props.handlepicList();
+		this.props.handlehotList();
+		this.props.handletab2List();
+	}
+	handleListchange(index, owner) {
+		this.setState({ index_flag: index });
+		if (index === 1) {
+			this.props.handleGuoList();
+		} else {
+			this.props.handlepicList(owner);
+		}
+	}
+	handleChange1() {
+		this.setState({ flag: "block", green: "green", flag1: "none", green0: "" });
+	}
+	handleChange2() {
+		this.setState({
+			flag: "none",
+			green: "",
+			flag1: "block",
+			green0: "green"
+		});
+	}
 }
-
 
 export default Class;

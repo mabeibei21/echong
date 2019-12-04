@@ -1,11 +1,14 @@
 import styled from "styled-components";
 export const Goods = styled.div`
+	height: 100%;
+	overflow: auto;
+
 	.banner {
 		img {
 			width: 375px;
 		}
 	}
-	.sort {
+	& > div:nth-of-type(4) {
 		height: 40px;
 		width: 100%;
 		span {
@@ -18,12 +21,29 @@ export const Goods = styled.div`
 			box-sizing: border-box;
 			background: url("https://static.epetbar.com/static_wap/epetapp/pages/clear_ware/images/price-sort.png")
 				no-repeat;
-			background-size: 10px 16px;
-			background-position: 80px 0px;
+			background-size: 8px 14px;
+			background-position: 90px 4px;
 		}
 		& > span:nth-of-type(3) {
 			border: 0;
+			background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575386081102&di=0957163eaba370d3dc293fabd4e4f4dc&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F015ff959f041faa801202b0cd53db3.gif")
+				no-repeat !important;
+			background-size: 149px 113px !important;
+			background-position: 15px -47px !important;
 		}
+	}
+
+	.sortup {
+		background: url("https://static.epetbar.com/static_wap/epetapp/pages/clear_ware/images/price-up.png")
+			no-repeat !important ;
+		background-size: 8px 14px !important;
+		background-position: 90px 4px !important;
+	}
+	.sortdown {
+		background: url("https://static.epetbar.com/static_wap/epetapp/pages/clear_ware/images/price-down.png")
+			no-repeat !important;
+		background-size: 8px 14px !important;
+		background-position: 90px 4px !important;
 	}
 	.bg {
 		height: 10px;
@@ -34,7 +54,6 @@ export const Goods = styled.div`
 	}
 	.wrap {
 		height: 100%;
-		overflow: auto;
 		ul {
 			li {
 				padding: 5px 10px;

@@ -58,7 +58,7 @@ export const Top = styled.div`
 	display: flex;
 	justify-content: space-around;
 	/* align-items: center; */
-	flex-direction: column; 
+	flex-direction: column;
 	.banner {
 		width: 100%;
 		display: flex;
@@ -66,8 +66,11 @@ export const Top = styled.div`
 		justify-content: center;
 		div {
 			width: 2.667rem;
+			height: 342px;
+			position: relative;
 			img {
 				width: 2.667rem;
+				position: absolute;
 			}
 		}
 	}
@@ -114,9 +117,8 @@ export const Top = styled.div`
 `;
 
 export const Mation = styled.div`
-	
 	margin: 10px 0;
- 
+
 	.a1 {
 		padding: 5px 10px;
 		display: flex;
@@ -224,7 +226,6 @@ export const Mation = styled.div`
 			border-bottom: 1px solid #eee;
 		}
 		ul {
-		
 			li {
 				overflow: hidden;
 				border-bottom: 1px solid #eee;
@@ -233,7 +234,7 @@ export const Mation = styled.div`
 				padding: 15px 0;
 				flex-flow: column;
 				.bottom {
-                    padding:0 10px;
+					padding: 0 10px;
 					p {
 						font-size: 12px;
 						color: #000;
@@ -242,7 +243,8 @@ export const Mation = styled.div`
 						width: 55px;
 					}
 				}
-				.top {      padding:0 10px;
+				.top {
+					padding: 0 10px;
 					width: 100%;
 					display: flex;
 					justify-content: space-between;
@@ -259,7 +261,7 @@ export const Mation = styled.div`
 					display: flex;
 					justify-content: space-around;
 					flex-flow: column;
-					
+
 					flex: 1;
 					p {
 						margin: 0;
@@ -267,7 +269,7 @@ export const Mation = styled.div`
 					}
 				}
 				.right {
-                    margin-right:20px;
+					margin-right: 20px;
 					width: 72px;
 					img:nth-of-type(1) {
 						width: 72px;
@@ -385,7 +387,7 @@ export const Buttono = styled.div`
 	position: absolute;
 	bottom: 0;
 	.details-bottom {
-		height: 0.5rem;
+		height: 0.4rem;
 		width: 100%;
 		background: #f5f5f5;
 		position: absolute;
