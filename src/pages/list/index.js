@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import Header from "../../components/header/index";
 import {PageContainer} from "../../common/styled";
 import {SearchBox,Nav,Default,GoodsList,Body,Screen} from "./styled";
@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {mapStateToProps,mapDispatchToProps} from "./mapStore";
 @connect(mapStateToProps,mapDispatchToProps)
 @withRouter
+// @connect()
 class List extends Component {
     constructor(){
         super();
@@ -97,5 +98,4 @@ class List extends Component {
     
 }
 
-
-export default List
+export default List;

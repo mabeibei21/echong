@@ -1,37 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import Header from "../../components/header/index";
-import {PageContainer} from "../../common/styled";
-import {Top, Mation, Estimate, Buttono,Section } from "./styled";
-import {withRouter} from "react-router-dom";
+import { PageContainer } from "../../common/styled";
+import { Top, Mation, Estimate, Buttono, Section } from "./styled";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+@connect(mapStateToProps, mapDispatchToProps)
 @withRouter
 class Detail extends Component {
-    render() {
-        return (
-            <PageContainer>
-                <Header title="商品 详情 评价"/>
-                <Section>
+	render() {
+		let { pic, detail } = this.props;
+		console.log(pic);
+		return (
+			<PageContainer>
+				<Header title="商品 详情 评价" />
+				<Section>
 					<Top>
 						<div className="banner">
 							<div>
-								<img src="https://img2.epetbar.com/goods/sales/20190829145632_257931.jpg?x-oss-process=style/cut&$1=500&$2=500" />
+								{pic.map((item, index) => {
+									return <img src={item.image} alt="" />;
+								})}
 							</div>
 						</div>
+
 						<div className="title">
-							<span>海洋之星 小型犬用纯鱼皮小丁 100g </span>
+							<span>{detail.subject}</span>
 						</div>
 						<div className="free">
-							<span>英国品牌 全鱼配方 风靡全球的优质食品</span>
+							<span>{detail.presubject}</span>
 						</div>
-						<div className="price">
-							<em>￥</em>
-							<b>39.00</b>
-							<del className="priceJX" id="detailsPriceJXJ_jxj">
+						<div className="">
+							<b>{detail.sale_price}</b>
+							<del className="JX" id="detailsJXJ_jxj">
 								<span>
-									<s>￥69.00</s>
+									<s>{detail.market_price}</s>
 								</span>
 							</del>
 							<div>
-								<img src="https://static.epetbar.com/static_wap/appmall/lib/goods/quality_assurance.png" />
+								<img
+									alt="#"
+									src="https://static.epetbar.com/static_wap/appmall/lib/goods/quality_assurance.png"
+								/>
 							</div>
 						</div>
 						<div className="bg"></div>
@@ -44,24 +54,9 @@ class Detail extends Component {
 						<div className="a3">
 							<h3>配方</h3>
 							<ul>
-								<li>
-									<span>鱼皮薄片</span>
-								</li>
-								<li>
-									<span> 鱼皮小丁</span>
-								</li>
-								<li>
-									<span>鱼皮薄片</span>
-								</li>
-								<li>
-									<span> 鱼皮小丁</span>
-								</li>
-								<li>
-									<span>鱼皮薄片</span>
-								</li>
-								<li>
-									<span> 鱼皮小丁</span>
-								</li>
+								{pic.map((item, index) => {
+									return <li></li>;
+								})}
 							</ul>
 						</div>
 						<div className="bg"></div>
@@ -69,9 +64,9 @@ class Detail extends Component {
 							<div className="amount">
 								<span>购买数量</span>
 								<p>
-									<input type="button" value="-" />>
-									<input type="text" value="1" />>
-									<input type="button" value="+" />>
+									<span type="button" value="-" />
+									<span type="text" value="1" />
+									<span type="button" value="+" />
 								</p>
 							</div>
 						</div>
@@ -88,15 +83,24 @@ class Detail extends Component {
 						</div>
 						<div className="a6">
 							<span>
-								<img src="https://static.epetbar.com/static_wap/appmall/lib/goods/qualityassurance.png" />
+								<img
+									alt="#"
+									src="https://static.epetbar.com/static_wap/appmall/lib/goods/qualityassurance.png"
+								/>
 								<span>正品保证</span>
 							</span>
 							<span>
-								<img src="https://static.epetbar.com/static_wap/appmall/lib/goods/freeshipping.png" />
+								<img
+									alt="#"
+									src="https://static.epetbar.com/static_wap/appmall/lib/goods/freeshipping.png"
+								/>
 								<span>99元包邮</span>
 							</span>
 							<span>
-								<img src="https://static.epetbar.com/static_wap/appmall/lib/goods/thirtydays.png" />
+								<img
+									alt="#"
+									src="https://static.epetbar.com/static_wap/appmall/lib/goods/thirtydays.png"
+								/>
 								<span>30天退货</span>
 							</span>
 						</div>
@@ -116,25 +120,35 @@ class Detail extends Component {
 								</span>
 							</div>
 							<ul>
-								<li>
-									<div className="top">
-										<div className="left">
-											<img src="https://img1.epetbar.com/2018-12/09/16/5f7173438d1191bedfd074bdf17bde22.jpg?x-oss-process=style/cut&$1=50&$2=50" />
+								{pic.map((item, index) => (
+									<li key={index}>
+										<div className="top">
+											<div className="left">
+												<img alt="#" src={item.avatar} />
+											</div>
+											<div className="middle">
+												<p>{item.disname}</p>
+												<p>{item.join_time}</p>
+											</div>
+											<div className="right">
+												<img alt="#" src={item.group_icon} />
+												<img
+													alt="#"
+													src={
+														"https://static.epetbar.com/static_web/pc/src/images/vip/v4.png"
+													}
+												/>
+											</div>
 										</div>
-										<div className="middle">
-											<p>团***子</p>
-											<p>加入E宠1425天</p>
+										<div className="bottom">
+											<p>没买成吧 不知道吃后效果</p>
+											<img
+												alt="#"
+												src="https://img2.epetbar.com/2019-09/22/00/ec913fab6a820d829b043c7442f46d85.jpg?x-oss-process=style/cut&$1=100&$2=100"
+											/>
 										</div>
-										<div className="right">
-											<img src="https://static.epetbar.com/skin/images/pt5.gif" />
-											<img src="https://static.epetbar.com/static_web/pc/src/images/vip/v4.png" />
-										</div>
-									</div>
-									<div className="bottom">
-										<p>没买成吧 不知道吃后效果</p>
-										<img src="https://img2.epetbar.com/2019-09/22/00/ec913fab6a820d829b043c7442f46d85.jpg?x-oss-process=style/cut&$1=100&$2=100" />
-									</div>
-								</li>
+									</li>
+								))}
 								<div className="look">
 									<a href="#">查看全部评价</a>
 									<a href="#">查看购买咨询</a>
@@ -149,6 +163,7 @@ class Detail extends Component {
 								<div className="ps21">
 									<div>
 										<img
+											alt="#"
 											src="https://img2.epetbar.com/brand/brandLogo/purchase_suppliers_file_1536288944.png"
 											alt=""
 										/>
@@ -179,8 +194,8 @@ class Detail extends Component {
 								</div>
 							</div>
 							<div className="btn">
-								<input type="button" value="查看商品" />
-								<input type="button" value="进入品牌馆" />
+								<span type="button" value="查看商品" />
+								<span type="button" value="进入品牌馆" />
 							</div>
 						</div>
 					</Estimate>
@@ -200,12 +215,21 @@ class Detail extends Component {
 						<a onClick={this.handleAddCart.bind(this)}>加入购物车</a>
 					</div>
 				</Buttono>
-            </PageContainer>
-        )
-    }
-    handleAddCart(){
-        this.props.history.push("cart")
-    }
+			</PageContainer>
+		);
+	}
+
+	componentDidMount() {
+		this.handleAsyncList();
+	}
+	handleAsyncList() {
+		console.log(this.props, "22222222");
+		this.props.handleDetailData();
+	}
+
+	handleAddCart() {
+		this.props.history.push("cart");
+	}
 }
 
 export default Detail;

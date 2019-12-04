@@ -1,5 +1,15 @@
 import styled from "styled-components";
 export const Tab = styled.div`
+	height: 100%;
+	overflow: auto;
+	display: ${props => props.fl};
+	.wrapp {
+	}
+	.bgg {
+		height: 10px;
+		width: 100%;
+		background: #eee;
+	}
 	.wrap {
 		div {
 			padding: 20px 0;
@@ -8,6 +18,8 @@ export const Tab = styled.div`
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
+			font-size: 14px;
+			color: #666;
 		}
 		ul {
 			padding: 0 10px;
@@ -41,6 +53,7 @@ export const Tab = styled.div`
 					overflow: hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
+					font-size: 13px;
 				}
 				span {
 					font-size: 12px;
