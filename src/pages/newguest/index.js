@@ -1,10 +1,17 @@
 import React,{Fragment} from "react";
 import Header from "../../components/header/index";
+import {PageContainer} from "../../common/styled";
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {mapStateToProps,mapDispatchToProps} from "./mapStore";
 import {Body,Tu,Intro} from "./styled";
+@connect(mapStateToProps,mapDispatchToProps)
+@withRouter
 class NewGuest extends React.Component{
     render(){
+        let {like}=this.props;
         return (
-            <Fragment>
+            <PageContainer>
                 <Header title="新客主粮趴"/>
                 <Body>
                 <div className="big">
@@ -15,29 +22,24 @@ class NewGuest extends React.Component{
             </Tu>
             {/* 人气推荐 */}
             <Intro>
-                <div className="intro">
-                    <img src="https://img2.epetbar.com/2017-06/30/12/5bacc70c6249770a77f4eb5c03212909.jpg@!water"/>
-                    <h6>伯纳天纯 simple系列 羊肉&豌豆配方全犬粮 3kg</h6>
-                    <h5><span>￥495.00</span><del>￥852.00</del></h5>
+            {
+                like.map((item,index)=>(
+                    <div className="intro" key={index}>
+                    <img src={item.good_image.img_url}/>
+                    <h6>{item.subject}</h6>
+                    <h5><span>￥{item.sale_price}</span><del>￥852.00</del></h5>
                     <h4>立即购买</h4>
                 </div>
-                <div className="intro">
-                    <img src="https://img2.epetbar.com/2017-06/30/12/5bacc70c6249770a77f4eb5c03212909.jpg@!water"/>
-                    <h6>伯纳天纯 simple系列 羊肉&豌豆配方全犬粮 3kg</h6>
-                    <h5><span>￥495.00</span><del>￥852.00</del></h5>
-                    <h4>立即购买</h4>
-                </div>
-                <div className="intro">
-                    <img src="https://img2.epetbar.com/2017-06/30/12/5bacc70c6249770a77f4eb5c03212909.jpg@!water"/>
-                    <h6>伯纳天纯 simple系列 羊肉&豌豆配方全犬粮 3kg</h6>
-                    <h5><span>￥495.00</span><del>￥852.00</del></h5>
-                    <h4>立即购买</h4>
-                </div>
+                ))
+            }
             </Intro>
             </div>
             </Body>
-            </Fragment>
+            </PageContainer>
         )
+    }
+    componentDidMount(){
+        this.props.handleNewGuest();
     }
 }
 

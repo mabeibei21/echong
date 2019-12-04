@@ -1,0 +1,11 @@
+export const weekAsyncType="WEEK_ASYNC_TYPE";
+export const listActionType="LIST_ACTION_TYPE";
+export const bookActionType="BOOK_ACTION_TYPE";
+export const robActionType="ROB_ACTION_TYPE";
+export const robChangeType="ROB_CHANGETYPE";
+export const priceActionType="PRICE_ACTION_TYPE";
+export const popularActionType="POPULAR_ACTION_TYPE";
+export const newestActionType="NEWEST_ACTION_TYPE";
+export const commentActionType="COMMENT_ACTION_TYPE";
+export const allActionType="ALL_ACTION_TYPE";
+export const newguestActionType="NEW_GUEST_ACTION_TYPE";

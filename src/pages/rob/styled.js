@@ -1,9 +1,15 @@
 import styled from "styled-components";
-
+export const Body=styled.div`
+    height:100%;
+    overflow:auto;
+`
 // 每日疯抢的导航条
 export const RobDay=styled.div`
     height:0.5rem;
     background:pink;
+    .active{
+        background:rgba(255,255,255,0.4)
+    }
     ul{
         width:100%;height:100%;
         display:flex;

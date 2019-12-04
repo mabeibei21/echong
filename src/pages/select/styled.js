@@ -22,6 +22,7 @@ export const Slider =styled.div`
 
 //搜索+导航
 export const Top=styled.div`
+    background:${props=>props.color};
     height:0.867rem;position:fixed;
     z-index:10;width:3.125rem;color:#fff;
     top:0;left:0;overflow:hidden;
@@ -128,7 +129,7 @@ export const Rushed=styled.div`
         }
     }
     .zuohe{
-        display:flex;
+        display:flex;float:left;
         .zuozuo{
             width:0.7rem;height:0.792rem;
             display:flex;flex-direction:column;

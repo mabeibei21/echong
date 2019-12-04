@@ -34,6 +34,11 @@ export const NavSec=styled.div`
             display:flex;justify-content:space-around;
             align-items:center;font-size:0.1rem;
             margin-top:0.083rem;
+            li:nth-of-type(2){
+                border-bottom:0.017rem solid green;padding:0.083rem 0;
+                box-sizing:border-box;
+                
+            }
         }
     }
 `

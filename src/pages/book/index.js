@@ -2,8 +2,20 @@ import React, { Component } from 'react'
 import {PageContainer} from "../../common/styled";
 import Header from "../../components/header/index";
 import {NavSec,NavThree,Share,Body} from "./styled";
-export default class Book extends Component {
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {mapStateToProps,mapDispatchToProps} from "./mapStore";
+@connect(mapStateToProps,mapDispatchToProps)
+@withRouter
+class Book extends Component {
     render() {
+        let {book} =this.props
+        let books =[];
+        book.map((item)=>{
+            if(item.type===1){
+                books.push(item);
+            }
+        })
         return (
             <PageContainer>
                 <Header title="小萌书"/>
@@ -26,6 +38,7 @@ export default class Book extends Component {
                     </ol>
                 </div>
             </NavSec>
+            {/* <Route path="/book/book2" component={Book2}></Route> */}
             {/* 能不能吃 导航3 */}
             <NavThree>
                 <ul>
@@ -38,49 +51,35 @@ export default class Book extends Component {
             </NavThree>
             {/* 经验分享 */}
             <Share>
-                <div className="bao">
+                {
+                    books.map((item,index)=>(
+                        <div className="bao" key={index}>
                     <div className="tutu">
-                        <img src="https://img1.epetbar.com/2019-09/25/11/ea076b5ad4f270fcab38b6b4b44cb87c.jpg?x-oss-process=style/cut&$1=250&$2=125"/>
-                        <div className="ppp"><h6>雪纳瑞被毛褪色，真相竟然是这样！</h6><h5>养雪纳瑞的铲屎官是否都有过类似经历，自家狗狗小时候的毛发颜色又深又亮，长着长着颜色就淡了，这是怎么回</h5></div>
+                        <img src={item.data.cover.img_url}/>
+                        <div className="ppp"><h6>{item.data.title}</h6><h5>{item.data.describe}</h5></div>
                     </div>
                     <div className="zi">
                         <p>
-                            <img src="https://img1.epetbar.com/2019-09/05/09/3e3980a88823a70ac5f48c49f82a1363.jpg?x-oss-process=style/waterfall&$1=50"/>
-                            汪品喵鉴
+                            <img src={item.data.user.avatar.img_url}/>
+                            {item.data.user.username}
                         </p>
                         <a><img src="../../../public/img/Btu.png"/>2</a>
                     </div>
                 </div>
-                <div className="bao">
-                    <div className="tutu">
-                        <img src="https://img1.epetbar.com/2019-09/25/11/ea076b5ad4f270fcab38b6b4b44cb87c.jpg?x-oss-process=style/cut&$1=250&$2=125"/>
-                        <div className="ppp"><h6>雪纳瑞被毛褪色，真相竟然是这样！</h6><h5>养雪纳瑞的铲屎官是否都有过类似经历，自家狗狗小时候的毛发颜色又深又亮，长着长着颜色就淡了，这是怎么回</h5></div>
-                    </div>
-                    <div className="zi">
-                        <p>
-                            <img src="https://img1.epetbar.com/2019-09/05/09/3e3980a88823a70ac5f48c49f82a1363.jpg?x-oss-process=style/waterfall&$1=50"/>
-                            汪品喵鉴
-                        </p>
-                        <a><img src="../../../public/img/Btu.png"/>2</a>
-                    </div>
-                </div>
-                <div className="bao">
-                    <div className="tutu">
-                        <img src="https://img1.epetbar.com/2019-09/25/11/ea076b5ad4f270fcab38b6b4b44cb87c.jpg?x-oss-process=style/cut&$1=250&$2=125"/>
-                        <div className="ppp"><h6>雪纳瑞被毛褪色，真相竟然是这样！</h6><h5>养雪纳瑞的铲屎官是否都有过类似经历，自家狗狗小时候的毛发颜色又深又亮，长着长着颜色就淡了，这是怎么回</h5></div>
-                    </div>
-                    <div className="zi">
-                        <p>
-                            <img src="https://img1.epetbar.com/2019-09/05/09/3e3980a88823a70ac5f48c49f82a1363.jpg?x-oss-process=style/waterfall&$1=50"/>
-                            汪品喵鉴
-                        </p>
-                        <a><img src="../../../public/img/Btu.png"/>2</a>
-                    </div>
-                </div>
+                    ))
+                }
+                
+                
             </Share>
             </div>
             </Body>
             </PageContainer>
         )
     }
+    componentDidMount(){
+        this.props.handleBookAsyncData();
+    }
 }
+
+
+export default Book;

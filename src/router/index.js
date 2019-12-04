@@ -1,4 +1,4 @@
-import {Select,Mine,Login,Class,Cart,Book,Search,List,NewGuest,Rob,DogFood,Spellgroup,Cleargoods,Detail,Exit,Collection} from "../pages";
+import {Select,Mine,Login,Class,Cart,Book,Search,List,NewGuest,Rob,DogFood,Spellgroup,Cleargoods,Detail,Exit,Collection,} from "../pages";
 
 export const TabBarRoute=[
     {
@@ -26,7 +26,8 @@ export const TabBarRoute=[
             flag:true
         },
         icon:"\ue693",
-        text:"小萌书"
+        text:"小萌书",
+        
     },
     {
         path:"/cart",

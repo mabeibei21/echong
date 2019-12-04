@@ -1,74 +1,74 @@
 import React,{Fragment} from "react";
 import Header from "../../components/header/index";
-import {RobDay,Title,Goods} from "./styled";
+import {RobDay,Title,Goods,Body} from "./styled";
+import {PageContainer} from "../../common/styled";
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {mapStateToProps,mapDispatchToProps} from "./mapStore";
+@connect(mapStateToProps,mapDispatchToProps)
+@withRouter
 class Rob extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            flag:'16:00'
+        }
+    }
     render(){
+        let {timePoints,Rlist,buyLogLink} =this.props;
+        let {flag}=this.state;
         return(
-            <Fragment>
+            <PageContainer>
                 <Header title="每日疯抢"/>
+                <Body><div className="content">
                 {/* 每日疯抢的导航条 */}
             <RobDay>
                 <ul>
-                    <li>
-                        <div><a>10.00</a>
-                        <span><img src="https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"/></span>
-                        <i>已结束</i></div>
-                        
+                    {
+                    timePoints.map((item,index)=>(
+                    <li key={item.time} onClick={this.props.handleTime.bind(this,item.time)} className={flag==item.time?'active':''}>
+                        <div><a>{item.time}</a>
+                        <span><img src={"https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"}/></span>
+                        <i>{item.stateLabel}</i></div>
                     </li>
-                    <li>
-                        <div><a>11.00</a>
-                        <span><img src="https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"/></span>
-                        <i>已结束</i></div>
-                    </li>
-                    <li>
-                        <div><a>12.00</a>
-                        <span><img src="https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"/></span>
-                        <i>已结束</i></div>
-                    </li>  <li>
-                        <div><a>13.00</a>
-                        <span><img src="https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"/></span>
-                        <i>已结束</i></div>
-                    </li>  <li>
-                        <div><a>14.00</a>
-                        <span><img src="https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"/></span>
-                        <i>已结束</i></div>
-                    </li>  <li>
-                        <div><a>15.00</a>
-                        <span><img src="https://static.epetbar.com/static_web/wap/dist/images/dailySurprise/point3.png"/></span>
-                        <i>已结束</i></div>
-                    </li>
+                        ))
+                    }
                 </ul>
             </RobDay>
             {/* 题目 */}
-            <Title>
-                <img src="https://static.epetbar.com/static_web/wap/dist/images/background/supercode.png"/>
-        超 低 折 扣 X 限 量 秒 杀
+            
+                    <Title>
+                <img src={buyLogLink.img}/>
+                {buyLogLink.tip}
             </Title>
+                
+            
+            
             {/* 商品 */}
             <Goods>
-                <div className="goods">
+                {
+                    Rlist.map((item,index)=>(
+                        <div className="goods" key={index}>
                 <div className="left">
-                    <img src="https://img1.epetbar.com/goods/sales/20190529182047_266002.jpg?x-oss-process=style/waterfall&$1=200"/>
+                    <img src={item.photo}/>
                 </div>
                 <div className="right">
-                    <h6>美国原装进口Timberwolf 马具型胸背带 粉色L号 宽1.1cm*胸围78.7-89cm </h6>
-                    <h5>限量5件</h5>
-                    <p><span>￥48.00<del>￥41.00</del></span><i>即将开始</i></p>
+                    <h6>{item.subject}</h6>
+                    <h5>{item.sumnum}</h5>
+                    <p><span>￥{item.selloutProgress}<del>￥{item.selloutProgress_new}</del></span><i>{item.selloutLabel}</i></p>
                 </div>
                 </div>
-                <div className="goods">
-                <div className="left">
-                    <img src="https://img1.epetbar.com/goods/sales/20190529182047_266002.jpg?x-oss-process=style/waterfall&$1=200"/>
-                </div>
-                <div className="right">
-                    <h6>美国原装进口Timberwolf 马具型胸背带 粉色L号 宽1.1cm*胸围78.7-89cm </h6>
-                    <h5>限量5件</h5>
-                    <p><span>￥48.00<del>￥41.00</del></span><i>即将开始</i></p>
-                </div>
-                </div>
+                    ))
+                }
+                
+                
             </Goods>
-            </Fragment>
+            </div></Body>
+            </PageContainer>
         )
+    }
+    componentDidMount(){
+        this.props.handleDayRobAsyncData();
     }
 }
 

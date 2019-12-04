@@ -5,7 +5,7 @@ export const HeaderContainer = styled.div `
     justify-content:space-between;
     align-items:center;
     background:#fff;position:relative;
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid #f5f5f5;
     font-size:0.15rem;
     .iconfont{
         font-size:0.167rem;
@@ -34,7 +34,7 @@ export const HeaderContainer = styled.div `
 
 // messagebox
 export const Search=styled.div`
-    height:0.567rem;border-bottom:1px solid #d7d7d7;
+    height:0.567rem;border-bottom:1px solid #f5f5f5;
     ul{
         height:0.567rem;display:flex;justify-content:space-around;
         align-items:center;

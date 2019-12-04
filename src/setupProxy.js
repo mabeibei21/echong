@@ -7,6 +7,12 @@ module.exports=(app)=>{
         pathRewrite:{
             "^/ajax":""
         }
+    })),
+    app.use("/v3",proxy({
+        target:"https://mallcdn.api.epet.com",
+        changeOrigin:true
     }))
 }
-//https://mall.api.epet.com/v3/index/main.html?do=getDynamicV415&pet_type=dog&version=435&is_single=0&isWeb=1&system=wap&distinct_id=
+
+
+//https://mallcdn.api.epet.com/v3/goods/list/main.html?version=358&brandid=0&page=1&orderby=def_desc&cateid=0&pet_type=dog&extend_pam=undefined%7Cbrandid%3A0%7Cextends_str%3A%7Creal_wid%3A%7Cregion%3A&real_wid=&region=&system=wap&isWeb=1&distinct_id=%C3%A6%C2%B8%C2%B8%C3%A5%C2%AE%C2%A2&_=1575429159424

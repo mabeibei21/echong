@@ -28,11 +28,33 @@ export const SearchBox=styled.div`
 export const Nav=styled.div`
     height:0.333rem;
     border-bottom:1px solid #f5f5f5;
+    .active{
+        color:green;
+    }
     ul{
         height:100%;display:flex;
         justify-content:space-around;
         align-items:center;font-size:0.117rem;
         color:#666;
+    }
+`
+// 点击筛选的时候出现的信息
+export const Screen=styled.div`
+    height:0.7rem;
+    .oneone{
+        height:0.35rem;display:flex;
+        justify-content:space-between;
+        align-items:center;background:#f5f5f5;
+        .dui{
+        color:green;
+    }
+        span{
+            margin-left:0.1rem;
+            font-size:0.117rem;
+        }
+        i{
+            margin-right:0.1rem;
+        }
     }
 `
 // 点击默认出现的信息
@@ -43,6 +65,9 @@ export const Default=styled.div`
         height:0.35rem;display:flex;
         justify-content:space-between;
         align-items:center;background:#f5f5f5;
+        .dui{
+        color:green;
+    }
         span{
             margin-left:0.1rem;
             font-size:0.117rem;
@@ -51,7 +76,9 @@ export const Default=styled.div`
             margin-right:0.1rem;
         }
     }
+    
 `
+
 // 商品列表
 
 export const GoodsList=styled.div`
