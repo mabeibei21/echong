@@ -1,20 +1,14 @@
-import {
-	detailListAction,
-	detailBigListAction
-} from "actions/detail/ActionCreator";
-import { goodsGidAction } from "actions/cleargoods/ActionCreator";
+import { detailAsyncAction } from "../../actions/detail/ActionCreator";
 export const mapStateToProps = state => ({
-	pic: state.detail.pic,
-	detail: state.detail.detail
+  img: state.detail.img,
+  subject: state.detail.subject,
+  presubject: state.detail.presubject,
+  sale_price: state.detail.sale_price,
+  market_price: state.detail.market_price
 });
 
-export const mapDispatchToProps = dispath => ({
-	handleDetailData(gid) {
-		dispath(detailListAction(gid));
-		console.log(gid, "detailMap16");
-	},
-	handleBigDetailData(gid) {
-		dispath(detailBigListAction(gid));
-		console.log(gid, "detailMap16");
-	}
+export const mapDispatchToProps = (dispatch) => ({
+  handleDetailData(gid) {
+    dispatch(detailAsyncAction(gid));
+  }
 });

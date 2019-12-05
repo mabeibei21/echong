@@ -28,20 +28,20 @@ class Header extends Component {
             {/* 点击出现 相当于messagebox */}
             <Search style={{display:flag?'block':'none'}}>
                 <ul>
-                    <li>
+                    <li  onClick={this.handleToHome.bind(this)}>
                         <i className="iconfont">&#xe60d;</i>
                         <span>首页</span>
                     </li>
-                    <li>
+                    <li onClick={this.handleToClass.bind(this)}>
                         <i className="iconfont">&#xe693;</i>
                         <span>商品分类</span>
                     </li>
 
-                    <li>
+                    <li onClick={this.handleToCart.bind(this)}>
                         <i className="iconfont">&#xe614;</i>
                         <span>购物车</span>
                     </li>
-                    <li>
+                    <li onClick={this.handleToMine.bind(this)}>
                         <i className="iconfont">&#xe638;</i>
                         <span>我的e宠</span>
                     </li>
@@ -57,6 +57,18 @@ class Header extends Component {
     }
     handleBackTo(){
         this.props.history.goBack();
+    }
+    handleToHome(){
+        this.props.history.push("/select");
+    }
+    handleToClass(){
+        this.props.history.push("/class");
+    }
+    handleToCart(){
+        this.props.history.push("/cart");
+    }
+    handleToMine(){
+        this.props.history.push("/mine");
     }
 }
 

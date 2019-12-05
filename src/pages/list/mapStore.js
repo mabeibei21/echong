@@ -23,9 +23,10 @@ export const mapDispatchToProps=(dispatch)=>({
             
         }
     },
-    handleDetailTo(){
+    /* handleDetailTo(gid){
+        dispatch(toDetailAsyncAction(gid));
         this.props.history.push("detail");
-    },
+    }, */
     handlepopular(index){
         switch(index){
             case 0:this.setState({disapper:!this.state.disapper,color:index});

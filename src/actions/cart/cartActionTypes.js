@@ -1,0 +1,1 @@
+export const cartType = "CART_TYPE";
