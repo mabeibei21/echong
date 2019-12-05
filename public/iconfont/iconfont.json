@@ -1,0 +1,128 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "153458",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "427539",
+      "name": "小于号",
+      "font_class": "xiaoyuhao",
+      "unicode": "e6e4",
+      "unicode_decimal": 59108
+    },
+    {
+      "icon_id": "594112",
+      "name": "下三角",
+      "font_class": "xiasanjiao",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "616188",
+      "name": "分类",
+      "font_class": "icon",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "1108826",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "2513598",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "5539617",
+      "name": "信息",
+      "font_class": "xinxi",
+      "unicode": "e9b2",
+      "unicode_decimal": 59826
+    },
+    {
+      "icon_id": "7181041",
+      "name": "对",
+      "font_class": "dui",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "7471887",
+      "name": "分类 功能 类目",
+      "font_class": "fenlei",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "7789794",
+      "name": "回顶部",
+      "font_class": "huidingbu",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "7889376",
+      "name": "我 的",
+      "font_class": "Icon_wode-copy",
+      "unicode": "e505",
+      "unicode_decimal": 58629
+    },
+    {
+      "icon_id": "7966196",
+      "name": "分类-未选中",
+      "font_class": "leimupinleifenleileibie1-outline",
+      "unicode": "e518",
+      "unicode_decimal": 58648
+    },
+    {
+      "icon_id": "8022814",
+      "name": "大于号",
+      "font_class": "right",
+      "unicode": "e50a",
+      "unicode_decimal": 58634
+    },
+    {
+      "icon_id": "8099954",
+      "name": "狗狗_精选",
+      "font_class": "gougou_jingxuan",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "8912653",
+      "name": "猫",
+      "font_class": "mao",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "9803210",
+      "name": "书",
+      "font_class": "shu",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "11378386",
+      "name": "分类-选中",
+      "font_class": "leimupinleifenleileibie",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    }
+  ]
+}
