@@ -104,6 +104,7 @@ class Cleargoods extends React.Component {
 		this.handleAsyncList();
 	}
 	handleAsyncList() {
+<<<<<<< HEAD
 		this.props.handleShaixuan();
 		this.props.handleClearList(this.page);
 		this.page++;
@@ -114,6 +115,9 @@ class Cleargoods extends React.Component {
 			this.props.handleClearList(page);
 			this.page++;
 		});
+=======
+		this.props.handleClearList();
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 	}
 	handleSort(index) {
 		if (this.state.sortFlag) {
@@ -122,10 +126,17 @@ class Cleargoods extends React.Component {
 				sortFlag: !this.state.sortFlag,
 				sortflag: index
 			});
+<<<<<<< HEAD
 			this.props.handleClearList(this.page, "up");
 		} else {
 			this.setState({ sort: "sortdown", sortFlag: !this.state.sortFlag });
 			this.props.handleClearList(this.page, "down");
+=======
+			this.props.handleClearList("up");
+		} else {
+			this.setState({ sort: "sortdown", sortFlag: !this.state.sortFlag });
+			this.props.handleClearList("down");
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 		}
 		console.log(this.state.sort);
 	}
@@ -135,10 +146,13 @@ class Cleargoods extends React.Component {
 		console.log(gid);
 		this.props.history.push("/detail");
 	}
+<<<<<<< HEAD
 	handleSetShai() {
 		this.setState({ display: "block" });
 		// this.forceUpdate();
 	}
+=======
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 }
 
 export default Cleargoods;

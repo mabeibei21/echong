@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 import {handleActions} from "redux-actions";
 //简化redux的书写流程
 import {listActionType,priceActionType,popularActionType,newestActionType,commentActionType,allActionType} from "../../actions/week/weekActionTypes";
+=======
+<<<<<<< HEAD
+import {handleActions} from "redux-actions";
+//简化redux的书写流程
+import {listActionType,priceActionType,popularActionType,newestActionType,commentActionType,allActionType} from "../../actions/week/weekActionTypes";
+=======
+import { handleActions } from "redux-actions";
+
+>>>>>>> 9e469049d28561ceeed962af870a71731c4d6a4b
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 import {
 	classPicType,
 	classListsType,
@@ -8,6 +19,10 @@ import {
 	classGuoType
 } from "actions/class/ActionTypes";
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 const defaultState={
     list:[],
     sort_rank:[],
@@ -80,3 +95,41 @@ export default handleActions({
         return guoState;
     }
 },defaultState)
+<<<<<<< HEAD
+=======
+=======
+const defaultState = {
+	hot_list: [],
+	pic_list: [],
+	tab2_list: []
+	// guo_list: []
+};
+
+export default handleActions(
+	{
+		[classListsType]: (state, action) => {
+			let hotState = JSON.parse(JSON.stringify(state));
+			hotState.hot_list = action.payload.categorys;
+			return hotState;
+		},
+		[classPicType]: (state, action) => {
+			let tabState = JSON.parse(JSON.stringify(state));
+			tabState.pic_list = action.payload.cate_list[0].list;
+			return tabState;
+		},
+		[classTab2Type]: (state, action) => {
+			let tabState = JSON.parse(JSON.stringify(state));
+			tabState.tab2_list = action.payload.brand;
+			return tabState;
+		},
+		[classGuoType]: (state, action) => {
+			let guoState = JSON.parse(JSON.stringify(state));
+			console.log(action.payload, 1111);
+			// guoState.tab2_list = action.payload.cate_list[1];
+			return guoState;
+		}
+	},
+	defaultState
+);
+>>>>>>> 9e469049d28561ceeed962af870a71731c4d6a4b
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422

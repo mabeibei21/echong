@@ -146,6 +146,7 @@
     ]
   },
   "babel": {
+<<<<<<< HEAD
     "plugins": [
       [
         "@babel/plugin-proposal-decorators",
@@ -153,6 +154,10 @@
           "legacy": true
         }
       ]
+=======
+    "plugins":[
+      ["@babel/plugin-proposal-decorators",{"legacy":true}]
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
     ],
     "presets": [
       "react-app"
