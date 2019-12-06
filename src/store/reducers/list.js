@@ -75,7 +75,7 @@ export default handleActions({
     },
     [classGuoType]: (state, action) => {
         let guoState = JSON.parse(JSON.stringify(state));
-        // console.log(action.payload, 1111);
+        console.log(action.payload, 1111);
         // guoState.tab2_list = action.payload.cate_list[1];
         return guoState;
     }
