@@ -29,14 +29,11 @@ export const mapDispatchToProps=(dispatch)=>({
     handleClearGoods(){
         this.props.history.push("cleargoods");
     },
-    handleScroll(){
-        let h=this.refs.bodyBox.scrollTop;
-        if(h>100){
-            this.setState({
-                colorF:true
-            })
-            // console.log(colorF)
-        }
+    handlePintuan(){
+        this.props.history.push("spellgroup");
+    },
+    handleBookTo(){
+        this.props.history.push("book");
     }
 })
 

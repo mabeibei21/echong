@@ -43,7 +43,7 @@ export const allListApi=(cateid=0)=>http.get({
         _:1575429159424
     }
 })
-// https://mallcdn.api.epet.com/v3/goods/list/main.html?version=358&brandid=0&page=1&orderby=def_desc&cateid=0&pet_type=dog&extend_pam=undefined%7Cbrandid%3A0%7Cextends_str%3A%7Creal_wid%3A%7Cregion%3A&real_wid=&region=&system=wap&isWeb=1&distinct_id=%C3%A6%C2%B8%C2%B8%C3%A5%C2%AE%C2%A2&_=1575429159424
+// https://mallcdn.api.epet.com/v3/goods/list/main.html?version=358,
 // 列表中 价钱排序的接口
 export const priceSortApi=(cateid=0)=>http.get({
     url:"/v3/goods/list/main.html",
@@ -108,7 +108,7 @@ export const commentSortApi=(cateid=0)=>http.get({
         _:1575425904844
     }
 })
-// https://mallcdn.api.epet.com/v3/goods/list/main.html?version=358&brandid=0&page=1&orderby=def_desc&cateid=0&pet_type=dog&extend_pam=undefined%7Cbrandid%3A0%7Cextends_str%3A%7Creal_wid%3A%7Cregion%3A&real_wid=&region=&system=wap&isWeb=1&distinct_id=%C3%A6%C2%B8%C2%B8%C3%A5%C2%AE%C2%A2&_=1575429159424
+
 // 小萌书的接口
 export const getBookApi=()=>http.get({
     url:"/ajax/v3/content/opgc/Index.html",
@@ -137,3 +137,17 @@ export const dayRobApi=(tid='20:00')=>http.get({
     }
 })
 
+
+// 详情页
+export const toDetailApi=(gid=100209)=>http.get({
+    url:"/v3/goods/detail/main.html",
+    data:{
+        gid:gid,
+        extend_pam:'buytype%3A%7Ctid%3A0',
+        version:410,
+        system:'wap',
+        isWeb:1,
+        distinct_id:'%C3%A6%C2%B8%C2%B8%C3%A5%C2%AE%C2%A2',
+        _:1575443193989
+    }
+})

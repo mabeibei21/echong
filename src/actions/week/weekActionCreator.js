@@ -1,5 +1,5 @@
-import {weekAsyncType,listActionType,bookActionType,robActionType,robChangeType,priceActionType,popularActionType,newestActionType,commentActionType,allActionType,newguestActionType} from "./weekActionTypes";
-import {getDynamicApi,getListApi,getBookApi,dayRobApi,priceSortApi,popularSortApi,newestSortApi,commentSortApi,allListApi} from "api/hub";
+import {weekAsyncType,listActionType,bookActionType,robActionType,robChangeType,priceActionType,popularActionType,newestActionType,commentActionType,allActionType,newguestActionType,toDetailActionType} from "./weekActionTypes";
+import {getDynamicApi,getListApi,getBookApi,dayRobApi,priceSortApi,popularSortApi,newestSortApi,commentSortApi,allListApi,toDetailApi} from "api/hub";
 
 // 首页
 export const weekAsyncAction=()=>{
@@ -126,3 +126,18 @@ export const NewAsyncAction=()=>{
         dispatch(newguestAction(data));
     }
 }
+//搜索页面
+/* export const searchAsyncAction=()=>{
+    let searchAction=(data)=>({
+        type:searchActionType,
+        data
+    })
+    return async (dispatch)=>{
+        let data=await getDynamicApi();
+        dispatch(searchAction(data));
+    }
+} */
+
+
+
+

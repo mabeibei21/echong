@@ -1,20 +1,24 @@
-import { detailListType, detailBigListType } from "./ActionTypes";
-import { createAction } from "redux-actions";
-import { detail_api, detailBig_api } from "api/detail";
+import { detailAsyncType,detailSecType} from "./ActionTypes";
 
-export const detailListAction = gid => {
-	let listAction = createAction(detailListType, data => data);
-	return async dispatch => {
-		let data = await detail_api(gid);
-		console.log(data, "detailactions");
-		dispatch(listAction(data));
-	};
-};
-export const detailBigListAction = gid => {
-	let listAction = createAction(detailBigListType, data => data);
-	return async dispatch => {
-		let data = await detailBig_api(gid);
-		console.log(data, "detailactions------BIG");
-		dispatch(listAction(data));
-	};
-};
+import {detailfirstapi,detailsecApi} from "api/detail";
+
+
+export const detailAsyncAction=(gid)=>{
+	let detailAction=(data)=>({
+		type:detailAsyncType,
+		data
+	})
+	let detailSecAction=(data)=>({
+		type:detailSecType,
+		data
+	})
+	return async (dispatch)=>{
+		let data=await detailfirstapi(gid);
+		let data1=await detailsecApi(gid);
+		dispatch(detailAction(data));
+		dispatch(detailSecAction(data1));
+		// console.log(data1,5555);
+	}
+
+	
+}

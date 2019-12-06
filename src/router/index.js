@@ -101,7 +101,7 @@ export const NoTabBarRoute=[
             flag:false
         }
     },{
-        path:"/detail",
+        path:"/detail/:gid",
         component:Detail,
         meta:{
             flag:false

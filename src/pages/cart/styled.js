@@ -47,22 +47,30 @@ background:#fff;
             font-style:normal;
         }
         strong {
+            display:flex;
             b{
                 border:1px solid #d7d7d7;
                 padding:0 0.042rem;
                 border-radius:0.017rem 0 0 0.017rem;
-                color:#d7d7d7;
+                color:#d7d7d7;cursor: pointer;
             }
             em{
                 border-top:1px solid #d7d7d7;
                 border-bottom:1px solid #d7d7d7;
                 padding:0 0.042rem;font-style:normal;
                 color:#d7d7d7;font-weight:normal;
+                display:flex;justify-content:center;
+                align-items:center;
+                input{
+                    width:0.267rem;height:0.167rem;
+                    border:none;outline:none;
+                }
             }
             a{
                 border:1px solid #d7d7d7;
                 padding:0 0.042rem;color:#d7d7d7;
                 border-radius:0 0.017rem 0.017rem 0;
+                cursor: pointer;
             }
         }
         }

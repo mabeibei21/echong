@@ -1,41 +1,169 @@
-import React, { Component } from 'react'
-import {PageContainer} from "../../common/styled";
+import React, { Component } from "react";
+import { PageContainer } from "../../common/styled";
 import Header from "../../components/header/index";
-import {CartList,Bottom,Body,Search} from "./styled";
-export default class Cart extends Component {
-    render() {
-        return (
-            <PageContainer>
-                <Header title="购物车" flag/>
-                <Body>
-                <CartList>
-                <h6>
-                    <i ><input type="checkbox"/></i>
-                    E宠西部中央仓
-                </h6>
-                <div className="carta">
-                    <div className="left">
-                        <input type="checkbox"/>
-                    </div>
-                    <div className="cartc">
-                        <img src="https://img2.epetbar.com/2015-11/26/14/832834279b53c1c40421034017f6d2c0.jpg@!200w-b"/>
-                    </div>
-                    <div className="cartr">
-                        <h6><span>[订单赠品]</span><i>路斯 手工坊系列 鸡肉火腿肠 200g</i></h6>
-                        <p><i>￥48.00</i><strong><b>-</b><em>1</em><a>+</a></strong></p>
-                    </div>
-                </div>
-            </CartList>
-            {/* 底部中间额 */}
-            <Bottom>
-                <p>
-                    <i className="iconfont">&#xe65b;</i>
-                    总额：<span>￥78.00</span>
-                </p>
-                <h6>去结算<span>(2)</span></h6>
-            </Bottom>
-            </Body>
-            </PageContainer>
-        )
+import { CartList, Bottom, Body } from "./styled";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+import { withRouter } from "react-router-dom";
+@connect(mapStateToProps, mapDispatchToProps)
+@withRouter
+class Cart extends Component {
+  constructor() {
+    super();
+    this.state = {
+      cart: JSON.parse(localStorage.getItem("cart")),
+      checked: true,
+      Sprice: 0,
+      Snum: 0
+    };
+    if (this.state.cart) {
+      this.state.cart.forEach(item => {
+        item.flag = true;
+      });
     }
+  }
+  render() {
+    let { cart, checked, Snum, Sprice } = this.state;
+    return (
+      <PageContainer>
+        <Header title="购物车" flag />
+        <Body>
+          <CartList>
+            <h6>
+              <i>
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={this.handleAllCheck.bind(this, checked)}
+                />
+              </i>
+              E宠西部中央仓
+            </h6>
+            {cart.map((item, index) => (
+              <div className="carta" key={item.id}>
+                <div className="left">
+                  <input
+                    type="checkbox"
+                    checked={item.flag}
+                    onChange={this.handleOneCheck.bind(this, index)}
+                  />
+                </div>
+                <div className="cartc">
+                  <img src={item.img} />
+                </div>
+                <div className="cartr">
+                  <h6>
+                    <span>[订单赠品]</span>
+                    <i>{item.title}</i>
+                  </h6>
+                  <p>
+                    <i>￥{item.price}</i>
+                    <strong>
+                      <b onClick={this.handleReduce.bind(this,index)}>-</b>
+                      <em>
+                        <input
+                          type="text"
+                          value={item.num}
+                          onChange={this.handleChange.bind(this, index)}
+                        />
+                      </em>
+                      <a onClick={this.handleAdd.bind(this,index)}>+</a>
+                    </strong><button onClick={this.handleDelete.bind(this,index)}>删除</button>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </CartList>
+          {/* 底部中间额 */}
+          <Bottom>
+            <p>
+              <i className="iconfont">&#xe65b;</i>
+              总额：<span>￥{Sprice}</span>
+            </p>
+            <h6>
+              去结算<span>{Snum}</span>
+            </h6>
+          </Bottom>
+        </Body>
+      </PageContainer>
+    );
+  }
+  handleDelete(index){
+      this.state.cart.splice(index,1);
+    //   console.log()
+      localStorage.setItem("cart",JSON.stringify(this.state.cart));
+      this.forceUpdate();
+      this.handleSprice();
+  }
+  handleAdd(index){
+      this.state.cart[index].num++;
+      localStorage.setItem("cart",JSON.stringify(this.state.cart));
+      this.forceUpdate();
+      this.handleSprice();
+  }
+  handleReduce(index){
+      if(Number(this.state.cart[index].num)>1){
+          this.state.cart[index].num--;
+          localStorage.setItem("cart",JSON.stringify(this.state.cart));
+          this.forceUpdate();
+          this.handleSprice();
+      }
+  }
+  handleAllCheck(checked) {
+    if (this.state.cart) {
+      this.setState(
+        {
+          checked: !checked
+        },
+        () => {
+          this.state.cart.forEach(item => {
+            item.flag = this.state.checked;
+          });
+          this.forceUpdate();
+          this.handleSprice();
+        }
+      );
+    }
+  }
+  handleOneCheck(index) {
+    if (this.state.cart) {
+      this.state.cart[index].flag = !this.state.cart[index].flag;
+      let mark =true;
+      for(var i=0;i<this.state.cart.length;i++){
+          if(!this.state.cart[i].flag){
+              mark=false;
+          }
+      }
+      this.state.checked=mark;
+      this.forceUpdate();
+      this.handleSprice();
+    }
+  }
+  handleChange(index) {}
+  handleSprice() {
+    if (this.state.cart) {
+      let sprice = 0;
+      let snum = 0;
+      for (var i = 0; i < this.state.cart.length; i++) {
+        if (this.state.cart[i].flag) {
+          sprice += ((this.state.cart[i].price * 10 )* this.state.cart[i].num);
+          snum += this.state.cart[i].num;
+        }
+      }
+      this.setState(
+        {
+          Sprice: sprice / 10
+        },
+        () => {}
+      );
+      this.setState({
+        Snum: snum
+      });
+      this.forceUpdate();
+    }
+  }
+  componentDidMount() {
+      this.handleSprice();
+  }
 }
+export default Cart;

@@ -2,24 +2,62 @@ import React, { Component } from 'react'
 import {PageContainer} from "../../common/styled";
 import {Slider,Top,Nav,Tu1,Tu2,Section,Tu3,Rushed,AllBuy,Like} from "./styled";
 import {withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 // import Weekchoice from "";
 import CartImg from "./Hcart.png";
+import ReactSwiper from "reactjs-swiper";
 import {connect} from "react-redux";
 import {mapStateToProps,mapDispatchToProps} from "./mapStore";
 @connect(mapStateToProps,mapDispatchToProps)
 @withRouter
+
+
+
+
+
 class Select extends Component {
-    
+    constructor(){
+        super();
+        this.state={
+            colorF:'',
+            color:''
+        }
+    }
+  
+       
     render() {
         let {Sberserk,Segroup,like}=this.props;
+        // console.log(like)
+        const ReactSwiperExample = () => {
+            const items=[{
+                image:'https://img2.epetbar.com/2019-12/04/14/1e6f687ffc01a308f3cdd06fd121a6d6.jpg?x-oss-process=style/water',
+            },{
+                image:'https://img2.epetbar.com/2019-12/02/16/54db3b78f2fc1e336ed67fdd771f6f0e.jpg?x-oss-process=style/water',
+            },{
+                image:'https://img2.epetbar.com/nowater/2019-12/03/16/0b044ff0980024b464b60722cc5e1458.jpg?x-oss-process=style/water',
+            },{
+                image:'https://img2.epetbar.com/2019-12/02/18/78796b87855463c0619567d6393ea9c8.png?x-oss-process=style/water',
+            }]
+          
+            const swiperOptions = {
+              preloadImages: true,
+              autoplay: 1000,
+              autoplayDisableOnInteraction: false
+            };
+            return (
+              <ReactSwiper swiperOptions={swiperOptions} showPagination items={items}
+                           className="swiper-example" />
+            );
+          }
         return (
             <PageContainer>
-                <Section onScroll={this.props.handleScroll.bind(this)} ref="bodyBox">
+                <Section onScroll={this.handleScroll.bind(this)} ref="bodyBox">
                     <div className="content">
                 <Slider>
-                    <img src="https://img2.epetbar.com/2019-11/27/18/1c0b6142bb59f46096a4a3e2d0374d9d.jpg?x-oss-process=style/water"/>
+                    <ReactSwiperExample />
                 </Slider>
                 <Top >
+                    <div style={{background:this.state.colorF,color:this.state.color}}>
                     <div className="top">
                     <div className="sousuo">
                         <p onClick={this.props.handleSearch.bind(this)}><i className="iconfont">&#xe623;</i><span>请输入搜索内容</span></p>
@@ -37,6 +75,7 @@ class Select extends Component {
                         </ul>
                     </div>
                     </div>
+                    </div>
                 </Top>
                 {/* 中间导航 */}
                 <Nav>
@@ -48,18 +87,18 @@ class Select extends Component {
                 </Nav>
                 {/* 图的组合 */}
                 <Tu1>
-                    <img className="tu1" src="https://img2.epetbar.com/2019-11/12/16/96737a4e9141f4cf31d455412b077a3d.jpg?x-oss-process=style/water"/>
-                    <img className="tu2" src="https://img2.epetbar.com/2019-11/11/15/20dca16cc75000fee0f3366f15556013.jpg?x-oss-process=style/water"/>
+                    <img onClick={this.props.handleNewGutse.bind(this)} className="tu1" src="https://img2.epetbar.com/2019-11/12/16/96737a4e9141f4cf31d455412b077a3d.jpg?x-oss-process=style/water"/>
+                    <img onClick={this.props.handleNewGutse.bind(this)} className="tu2" src="https://img2.epetbar.com/2019-11/11/15/20dca16cc75000fee0f3366f15556013.jpg?x-oss-process=style/water"/>
                 </Tu1>
             
                 <Tu2>
                     <div className="left">
-                        <img src="https://img2.epetbar.com/2019-11/22/18/2ba78e8d92c409e749941ba6d59c0be5.gif?x-oss-process=style/water"/>
+                        <img onClick={this.props.handleNewGutse.bind(this)} src="https://img2.epetbar.com/2019-11/22/18/2ba78e8d92c409e749941ba6d59c0be5.gif?x-oss-process=style/water"/>
                     </div>
                     <div className="right">
                         <img onClick={this.props.handleNewGutse.bind(this)} src="https://img2.epetbar.com/2019-11/28/19/590bbefef571b3a5406abee766169372.jpg?x-oss-process=style/water"/>
-                        <img src="https://img2.epetbar.com/2019-11/28/19/6803e8645c76b6c2bdff934195637422.jpg?x-oss-process=style/water"/>
-                        <img src="https://img2.epetbar.com/2019-11/28/19/326552320bcf70e4e2f5f1fd47c6bc1e.jpg?x-oss-process=style/water"/>
+                        <img onClick={this.props.handleNewGutse.bind(this)} src="https://img2.epetbar.com/2019-11/28/19/6803e8645c76b6c2bdff934195637422.jpg?x-oss-process=style/water"/>
+                        <img onClick={this.props.handleNewGutse.bind(this)} src="https://img2.epetbar.com/2019-11/28/19/326552320bcf70e4e2f5f1fd47c6bc1e.jpg?x-oss-process=style/water"/>
                     </div>
                 </Tu2>
                 <Tu3>
@@ -94,7 +133,7 @@ class Select extends Component {
                         </div>
                         {
                             Segroup.map((item,index)=>(
-                                <div className="zuohe" key={index}>
+                                <div onClick={this.props.handlePintuan.bind(this)} className="zuohe" key={index}>
                             <div className="zuozuo">
                                 <img src={item.image.img_url}/>
                                 <h6>￥{item.sale_price}</h6>
@@ -113,7 +152,7 @@ class Select extends Component {
                         <img className="tu2" src="https://img2.epetbar.com/2019-11/30/16/28d785474fbf16dbfdeea67e67c0dce2.png?x-oss-process=style/water"/>
                     </div>
                     {/* 小萌书 */}
-                    <div className="book">
+                    <div className="book" onClick={this.props.handleBookTo.bind(this)}>
                         <img className="tutop" src="https://img2.epetbar.com/2019-11/30/15/92f68c791cfaf290efd4018713af80a7.png?x-oss-process=style/water"/>
                         <img className="tubottom" src="https://img2.epetbar.com/2019-11/30/16/7a6588914bd812254e8706dbb1a8b37a.jpg?x-oss-process=style/water"/>
                     </div>
@@ -126,7 +165,8 @@ class Select extends Component {
                         </h5>
                         {
                             like.map((item,index)=>(
-                                <div className="box" key={index}>
+                                <Link key={index} to={"/detail/"+item.gid}>
+                                <div className="box" >
                             <div className="box1" >
                                 <img src={item.good_image.img_url}/>
                                 <p>{item.subject}</p>
@@ -138,6 +178,7 @@ class Select extends Component {
                                 </h6>
                             </div>
                         </div>
+                        </Link>
                             ))
                         }
                     </div>
@@ -147,9 +188,29 @@ class Select extends Component {
             </PageContainer>
         )
     }
+    handleScroll(){
+        let h=this.refs.bodyBox.scrollTop;
+        // console.log(h);
+        if(h>100){
+            this.setState({
+                colorF:"#fff",
+                color:"#000"
+            })
+        }else{
+            this.setState({
+                colorF:"",
+                color:""
+            })
+        }
+        // console.log(this.state.colorF)
+    }
     componentDidMount(){
         this.props.handleWeekAsyncData();
     }
+
+
+
+    
     
 }
 

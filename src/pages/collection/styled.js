@@ -2,6 +2,7 @@ import styled from "styled-components";
 // 身体body
 export const Body=styled.div`
     height:100%;
+    
 `
 // 头部
 export const HeaderContainer = styled.div `
@@ -68,6 +69,12 @@ export const Nav=styled.div`
             display:flex;justify-content:center;
             align-items:center;font-size:0.117rem;
         }
+        /* li:nth-of-type(1){
+            border-bottom:1px solid green;
+        } */
+        .active{
+            border-bottom:1px solid green;
+        }
     }
 `
 // 商品
@@ -109,4 +116,12 @@ export const Goods=styled.div`
             }
         }
     }
+`
+
+export const Class=styled.div`
+        height:0.375rem;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    
 `

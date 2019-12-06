@@ -26,10 +26,13 @@ export const Top=styled.div`
     height:0.867rem;position:fixed;
     z-index:10;width:3.125rem;color:#fff;
     top:0;left:0;overflow:hidden;
+    .colr{
+        background:#fff;
+    }
     .sousuo{
         display:flex;height:0.25rem;
         justify-content:space-around;
-        align-items:center;margin-top:0.208rem;
+        align-items:center;padding-top:0.208rem;
         p{
             width:2.542rem;height:0.208rem;color:#333;
             background:#f3f4f5;border-radius:0.083rem;
@@ -67,7 +70,7 @@ export const Top=styled.div`
 //中间导航
 export const Nav=styled.div`
     height:0.958rem;position:relative;
-    top:-0.125rem;left:0;
+    top:-0.125rem;left:0;z-index:5;
     img{
         width:0.625rem;height:0.958rem;
     }
@@ -197,6 +200,7 @@ export const Like=styled.div`
                 overflow:hidden;
                 text-overflow:ellipsis;
                 margin-top:0.042rem;
+                color:#333;
             }
             h6{
                 display:flex;justify-content:space-between;
