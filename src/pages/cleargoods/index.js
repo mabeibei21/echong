@@ -50,41 +50,41 @@ class Cleargoods extends React.Component {
 							<ul>
 								{list
 									? list.map((item, index) => (
-											<li
-												onClick={this.handleNext.bind(this, sys_time)}
-												key={item.gid}
-											>
-												<div className="top">
-													<span className="fontRed">{item.typename}</span>
-													<span>{item.clear_caption}</span>
-													<div className="zhe">
-														<div className="p-top">{item.discount}</div>
-														<div className="p-bottom"></div>
-													</div>
+										<li
+											onClick={this.handleNext.bind(this, sys_time)}
+											key={item.gid}
+										>
+											<div className="top">
+												<span className="fontRed">{item.typename}</span>
+												<span>{item.clear_caption}</span>
+												<div className="zhe">
+													<div className="p-top">{item.discount}</div>
+													<div className="p-bottom"></div>
 												</div>
-												<div className="bottom">
-													<div className="left">
-														<img src={item.photos[0]} />
-													</div>
-													<div className="right">
-														<p className="p1">{item.subject}</p>
+											</div>
+											<div className="bottom">
+												<div className="left">
+													<img src={item.photos[0]} />
+												</div>
+												<div className="right">
+													<p className="p1">{item.subject}</p>
+													<span>
+														{"￥" + item.zprice}
+														<del>{"￥" + item.sale_price}</del>
+													</span>
+													<div>
 														<span>
-															{"￥" + item.zprice}
-															<del>{"￥" + item.sale_price}</del>
+															<span>省</span>
+															<b>{"￥" + item.less}</b>
 														</span>
-														<div>
-															<span>
-																<span>省</span>
-																<b>{"￥" + item.less}</b>
-															</span>
 
-															<img src="https://static.epetbar.com/static_wap/epetapp/pages/clear_ware/images/cart-new.png" />
-														</div>
+														<img src="https://static.epetbar.com/static_wap/epetapp/pages/clear_ware/images/cart-new.png" />
 													</div>
 												</div>
-												<div className="bg"></div>
-											</li>
-									  ))
+											</div>
+											<div className="bg"></div>
+										</li>
+									))
 									: ""}
 							</ul>
 						</div>
@@ -104,7 +104,6 @@ class Cleargoods extends React.Component {
 		this.handleAsyncList();
 	}
 	handleAsyncList() {
-<<<<<<< HEAD
 		this.props.handleShaixuan();
 		this.props.handleClearList(this.page);
 		this.page++;
@@ -115,9 +114,6 @@ class Cleargoods extends React.Component {
 			this.props.handleClearList(page);
 			this.page++;
 		});
-=======
-		this.props.handleClearList();
->>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 	}
 	handleSort(index) {
 		if (this.state.sortFlag) {
@@ -126,17 +122,10 @@ class Cleargoods extends React.Component {
 				sortFlag: !this.state.sortFlag,
 				sortflag: index
 			});
-<<<<<<< HEAD
 			this.props.handleClearList(this.page, "up");
 		} else {
 			this.setState({ sort: "sortdown", sortFlag: !this.state.sortFlag });
 			this.props.handleClearList(this.page, "down");
-=======
-			this.props.handleClearList("up");
-		} else {
-			this.setState({ sort: "sortdown", sortFlag: !this.state.sortFlag });
-			this.props.handleClearList("down");
->>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 		}
 		console.log(this.state.sort);
 	}
@@ -146,13 +135,10 @@ class Cleargoods extends React.Component {
 		console.log(gid);
 		this.props.history.push("/detail");
 	}
-<<<<<<< HEAD
 	handleSetShai() {
 		this.setState({ display: "block" });
 		// this.forceUpdate();
 	}
-=======
->>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 }
 
 export default Cleargoods;
