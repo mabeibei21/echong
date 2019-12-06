@@ -1,10 +1,15 @@
 import { handleActions } from "redux-actions";
-import { goodsListType, goodsGidType } from "actions/cleargoods/ActionTypes";
+import {
+	goodsListType,
+	goodsGidType,
+	shaixuanType
+} from "actions/cleargoods/ActionTypes";
 
 const defaultState = {
 	goods_list: [],
 	gid: "",
-	sys_time: ""
+	sys_time: "",
+	shaixuan: []
 };
 
 export default handleActions(
@@ -20,6 +25,11 @@ export default handleActions(
 			gidState.gid = action.gid;
 			gidState.sys_time = action.sys_time;
 			return gidState;
+		},
+		[shaixuanType]: (state, action) => {
+			let shaixuanState = JSON.parse(JSON.stringify(state));
+			shaixuanState.shaixuan = action.payload;
+			return shaixuanState;
 		}
 	},
 	defaultState

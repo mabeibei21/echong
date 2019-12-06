@@ -1,11 +1,18 @@
-import { goodsListType, goodsGidType } from "./ActionTypes";
-import { cleargoods_api } from "api/cleargoods";
+import { goodsListType, goodsGidType, shaixuanType } from "./ActionTypes";
+import { cleargoods_api, shaixuanApi } from "api/cleargoods";
 import { createAction } from "redux-actions";
 
-export const goodsListAction = price => {
+export const goodsListAction = (page, price, type) => {
 	let listAction = createAction(goodsListType, data => data);
 	return async dispatch => {
-		let data = await cleargoods_api(price);
+		let data = await cleargoods_api(page, price, type);
+		dispatch(listAction(data));
+	};
+};
+export const shaixuanAction = () => {
+	let listAction = createAction(shaixuanType, data => data);
+	return async dispatch => {
+		let data = await shaixuanApi();
 		dispatch(listAction(data));
 	};
 };

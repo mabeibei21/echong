@@ -3,9 +3,15 @@ import {handleActions} from "redux-actions";
 //简化redux的书写流程
 import {listActionType,priceActionType,popularActionType,newestActionType,commentActionType,allActionType} from "../../actions/week/weekActionTypes";
 =======
+<<<<<<< HEAD
+import {handleActions} from "redux-actions";
+//简化redux的书写流程
+import {listActionType,priceActionType,popularActionType,newestActionType,commentActionType,allActionType} from "../../actions/week/weekActionTypes";
+=======
 import { handleActions } from "redux-actions";
 
 >>>>>>> 9e469049d28561ceeed962af870a71731c4d6a4b
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 import {
 	classPicType,
 	classListsType,
@@ -14,6 +20,9 @@ import {
 } from "actions/class/ActionTypes";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 const defaultState={
     list:[],
     sort_rank:[],
@@ -86,6 +95,8 @@ export default handleActions({
         return guoState;
     }
 },defaultState)
+<<<<<<< HEAD
+=======
 =======
 const defaultState = {
 	hot_list: [],
@@ -121,3 +132,4 @@ export default handleActions(
 	defaultState
 );
 >>>>>>> 9e469049d28561ceeed962af870a71731c4d6a4b
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422

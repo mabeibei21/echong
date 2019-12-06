@@ -1,14 +1,11 @@
 import styled from "styled-components";
 export const Goods = styled.div`
-	height: 100%;
-	overflow: auto;
-
 	.banner {
 		img {
 			width: 375px;
 		}
 	}
-	& > div:nth-of-type(4) {
+	& > div:nth-of-type(2) {
 		height: 40px;
 		width: 100%;
 		span {

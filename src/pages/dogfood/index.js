@@ -1,49 +1,113 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import Header from "../../components/header/index";
-import {PageContainer} from "../../common/styled";
+import { PageContainer } from "../../common/styled";
 import { PetFood } from "./styled";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+@connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 class DogFood extends Component {
-    render() {
-        return (
-            <PageContainer>
-                <Header title="进口狗粮"/>
-                <PetFood>
+	render() {
+		let { food, list } = this.props;
+		if (food) {
+			food = food.datas;
+			if (food) {
+				food = food.list;
+				console.log();
+			}
+		}
+		if (list) {
+			list = list.data;
+		}
+		console.log(food, "food", list, "list");
+
+		return (
+			<PageContainer>
+				<Header title="进口狗粮" />
+				<PetFood>
 					<div className="wrap">
 						<div className="banner">
-							<img src="https://img2.epetbar.com/2019-10/14/10/7671140d2e4bd0d1988f0d5d84ac1d63.jpg?x-oss-process=style/water" />
-							<img src="https://img2.epetbar.com/2019-02/21/19/0e7c85426dbe2221c788ccd9f2e1f4d4.jpg?x-oss-process=style/water" />
+							<img alt="" src={food ? food[0].data.images[0].img_url : ""} />
+							<img
+								alt=""
+								src={food ? food[1].data.column_images[0][0].img_url : ""}
+							/>
 						</div>
 						<div className="nav">
-							<img src="https://img2.epetbar.com/2019-03/19/18/7e5c8571e1231e62eca5afd03aaddab3.jpg?x-oss-process=style/water" />
+							<img
+								alt=""
+								src={food ? food[2].data.column_images[0][0].img_url : ""}
+							/>
 							<ul>
-								<li>
-									<img src="https://img2.epetbar.com/2019-02/21/19/058e1276dbd368cf7f48adc4ad20cf0f.jpg?x-oss-process=style/water" />
-								</li>
-								<li>
-									<img src="https://img2.epetbar.com/2019-02/21/19/427a0890eff8a0ac4a3d01be0110e711.jpg?x-oss-process=style/water" />
-								</li>
-								<li>
-									<img src="https://img2.epetbar.com/2019-02/21/19/8ef356b33a470d19333cd845b23c1a4b.jpg?x-oss-process=style/water" />
-								</li>
-								<li>
-									<img src="https://img2.epetbar.com/2019-02/21/19/8000c7d7d5ef5ad442f49242c11a816f.jpg?x-oss-process=style/water" />
-								</li>
+								{food
+									? food[3].data.column_images.map(item => (
+											<li>
+												<img src={item[0].img_url} alt="" />{" "}
+											</li>
+									  ))
+									: ""}
 							</ul>
-							<img src="https://img2.epetbar.com/2019-02/22/10/d19691f762e9d2e579225c4deaf7f3b5.gif?x-oss-process=style/water" />
+							<img
+								alt=""
+								src={food ? food[4].data.column_images[0][0].img_url : ""}
+							/>
 							<div className="zhishi">
-								<img src="https://img2.epetbar.com/2019-02/21/19/497b683013cd4517b826ea8f3d8c79f7.jpg?x-oss-process=style/water" />
+								<img
+									alt=""
+									src={food ? food[5].data.column_images[0][0].img_url : ""}
+								/>
 							</div>
 
 							<div className="lf">
-								<img src="https://img2.epetbar.com/2019-02/21/20/25fc1bfca3b8d6139be5711b412996c8.jpg?x-oss-process=style/water" />
-								<img src="https://img2.epetbar.com/2019-02/21/20/468a18b43f8dbaf0539563250d43e7b2.jpg?x-oss-process=style/water" />
+								{food
+									? food[6].data.column_images.map(item => (
+											<img src={item[0].img_url} alt="" />
+									  ))
+									: ""}
 							</div>
 							<div className="zhishi">
-								<img src="https://img2.epetbar.com/2019-02/21/19/21d8c213dac97ef2f0aa8d5c65ef1372.jpg?x-oss-process=style/water" />
+								<img
+									alt=""
+									src={food ? food[7].data.column_images[0][0].img_url : ""}
+								/>
 							</div>
 						</div>
 						<div className="list">
 							<ul>
+<<<<<<< HEAD
+								{food
+									? food[8].data.column_images[0].map(item => (
+											<li>
+												<img src={item.img_url} alt="" />
+											</li>
+									  ))
+									: ""}
+								{food
+									? food[8].data.column_images[1].map(item => (
+											<li>
+												<img src={item.img_url} alt="" />
+											</li>
+									  ))
+									: ""}
+							</ul>
+							<div>
+								<img
+									alt=""
+									src={food ? food[9].data.column_images[0][0].img_url : ""}
+								/>
+								<img
+									alt=""
+									src="https://img2.epetbar.com/2019-10/17/20/84dd6c38059e8894d07e9b89e6d63f03.jpg?x-oss-process=style/water"
+								/>
+								<div className="wrap">
+									<ul>
+										<li>
+											<img
+												alt=""
+												src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200"
+											/>
+=======
 								<li>
 									<img src="https://img2.epetbar.com/2019-02/21/19/e65e0e63d0cbe9459fdd3e17eea69d08.jpg?x-oss-process=style/water" />
 								</li>
@@ -67,34 +131,63 @@ class DogFood extends Component {
 									<ul>
 										<li>
 											<img src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200" />
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 											<p>￥756.00</p>
 											<p>
 												<del>￥1118.00</del>
 											</p>
 										</li>
 										<li>
+<<<<<<< HEAD
+											<img
+												alt=""
+												src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200"
+											/>
+=======
 											<img src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200" />
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 											<p>￥756.00</p>
 											<p>
 												<del>￥1118.00</del>
 											</p>
 										</li>
 										<li>
+<<<<<<< HEAD
+											<img
+												alt=""
+												src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200"
+											/>
+=======
 											<img src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200" />
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 											<p>￥756.00</p>
 											<p>
 												<del>￥1118.00</del>
 											</p>
 										</li>
 										<li>
+<<<<<<< HEAD
+											<img
+												alt=""
+												src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200"
+											/>
+=======
 											<img src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200" />
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 											<p>￥756.00</p>
 											<p>
 												<del>￥1118.00</del>
 											</p>
 										</li>
 										<li>
+<<<<<<< HEAD
+											<img
+												alt=""
+												src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200"
+											/>
+=======
 											<img src="https://img1.epetbar.com/common/upload/commonfile/2019/011/14/113322_31270.jpg?x-oss-process=style/fill&$1=200&$2=200" />
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 											<p>￥756.00</p>
 											<p>
 												<del>￥1118.00</del>
@@ -102,15 +195,32 @@ class DogFood extends Component {
 										</li>
 									</ul>
 								</div>
+<<<<<<< HEAD
+								<img
+									alt=""
+									src="https://img2.epetbar.com/2019-10/22/09/e7426d74e3892bb80ca507ec23efd675.jpg?x-oss-process=style/water"
+								/>
+=======
 								<img src="https://img2.epetbar.com/2019-10/22/09/e7426d74e3892bb80ca507ec23efd675.jpg?x-oss-process=style/water" />
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 							</div>
 							<ul></ul>
 						</div>
 					</div>
 				</PetFood>
+<<<<<<< HEAD
+			</PageContainer>
+		);
+	}
+	componentDidMount() {
+		this.props.handlefood();
+		this.props.handlelist();
+	}
+=======
             </PageContainer>
         )
     }
+>>>>>>> d209379a66cc39580c15cc73c7f24ac9a61e4422
 }
 
 export default DogFood;

@@ -1,14 +1,22 @@
 import styled from "styled-components";
 export const Spelles = styled.div`
 	width: 100%;
+	height: 100%;
 	.nav {
 		height: 0.333rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
-		& > li:nth-of-type(1) {
+		.active {
 			padding-bottom: 5px;
 			border-bottom: 0.025rem solid green;
+		}
+	}
+	.wrap {
+		height: 100%;
+		overflow: auto;
+		ul {
+			padding-bottom: 100px;
 		}
 	}
 	.main {

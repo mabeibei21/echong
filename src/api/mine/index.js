@@ -1,5 +1,5 @@
 import http from "utils/request";
-export const detail_api = () =>
+export const detailApi = () =>
 	http.get({
 		url: "v3/goods/detail/main.html",
 		data: {
